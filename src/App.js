@@ -1,11 +1,10 @@
 import React from 'react';
+import Homepage from "./containers/homepage";
 
 function App() {
-  return (
-    <div className="App">
-
-    </div>
-  );
+    return (
+        <Homepage/>
+    );
 }
 
 export default App;
