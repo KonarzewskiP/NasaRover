@@ -33,11 +33,11 @@ const CheckboxInputContainer = styled.span`
   }
   input:checked + ${CheckboxControl} svg{
     transform: scale(1);
+    box-shadow: 0 0 0 0.05em  red, 0 0 0.15em 0.1em white;
+    border-radius: 0.25em;
   }
-  
   input:focus + ${CheckboxControl} {
-    box-shadow: 0 0 0 0.05em indianred, 0 0 0.15em 0.1em #fff;
-    //box-shadow: 0 0 0 0.05em #fff, 0 0 0.15em 0.1em indianred;
+    box-shadow: 0 0 0 0.05em white, 0 0 0.15em 0.15em indianred;
   }
 `
 const CheckboxInput = styled.input`
@@ -49,11 +49,11 @@ const CheckboxInput = styled.input`
 const Checkbox = ({camera, roverCamera, setRoverCamera, index}) => {
     const cameras = RoversCameras();
 
-    const onChange = index => e => {
+    const onChange = (e) => {
         let newArr = [...roverCamera];
-        newArr[index].isChecked = !newArr[index].isChecked;
+        let cameraIndex = newArr.findIndex(x=>x.name === camera);
+        newArr[cameraIndex].isChecked = !newArr[cameraIndex].isChecked;
         setRoverCamera(newArr);
-        console.log(roverCamera);
     }
 
     return (
@@ -63,9 +63,9 @@ const Checkbox = ({camera, roverCamera, setRoverCamera, index}) => {
                     <CheckboxInput
                         id={index}
                         type="checkbox"
-                        checked={roverCamera[index].isChecked}
+                        checked={roverCamera[roverCamera.findIndex(x=>x.name === camera)].isChecked}
                         value={camera}
-                        onChange={onChange(index)}
+                        onChange={onChange}
                     />
                     <CheckboxControl>
                         <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' aria-hidden="true"

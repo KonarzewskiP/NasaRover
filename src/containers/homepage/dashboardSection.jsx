@@ -1,10 +1,11 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import styled from "styled-components";
 
 //Import Rovers Data
 import roversData from '../../assets/rovers_data/RoversData.js';
 import Checkbox from "../../components/checkbox";
 import Button from "../../components/button";
+import RadioButton from "../../components/radioButton";
 
 const DashboardContainer = styled.div`
   flex: 1;
@@ -15,7 +16,6 @@ const DashboardContainer = styled.div`
   rgba(0, 0, 0, 0.7),
   rgba(0, 0, 200, 0.2));
   border-radius: 2rem 0 0 2rem;
-
 `
 
 const RoverInfo = styled.div`
@@ -28,7 +28,7 @@ const RoverInfo = styled.div`
 `
 
 const RoverImage = styled.img`
-  height: 250px;
+  max-height: 220px;
   margin: 2rem 2rem 0 2rem;
   box-shadow: 6px 6px 20px rgba(169, 169, 169, 0.3);
   border-radius: 5px;
@@ -40,6 +40,7 @@ const RoverName = styled.h2`
 `
 
 const CameraCheckboxes = styled.form`
+  height: 70%;
   border: 1px solid pink;
   padding: 2rem 0 2rem 2rem;
   width: 100%;
@@ -52,16 +53,43 @@ const CameraInfo = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
 `
 
 const ButtonContainer = styled.div`
   display: flex;
+  padding: 1rem 0 0 1.9rem;
+`
+const InputNumberContainer = styled.div`
+  display: flex;
   padding: 0.5rem 0 0 1.9rem;
-  
+
+  input {
+    background: transparent;
+    color: white;
+    outline: none;
+    border: 1px solid white;
+    transition: all 250ms ease-in-out;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1rem;
+    padding: 0.3rem 0.3rem;
+
+    &:focus {
+      box-shadow: 0 0 0 0.05em indianred, 0 0 0.15em 0.1em #fff;
+    }
+  }
+`
+const RadioButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 0 3.5rem 2rem 2rem;
 `
 
-const DashboardSection = () => {
+const DashboardSection = ({setPicturesFromMars}) => {
+
+    const [rover, setRover] = useState("Spirit");
+    const [currentRoverIndex, setCurrentRoverIndex] = useState(0);
+    const [marsSol, setMarsSol] = useState('0');
     const [roverCamera, setRoverCamera] = useState([
         {name: 'FHAZ', isChecked: false},
         {name: 'RHAZ', isChecked: false},
@@ -75,24 +103,39 @@ const DashboardSection = () => {
     ]);
 
     const [...rovers] = roversData();
-    // console.log(rovers[1].rover_cameras.split(',').forEach((cam) => console.log(cam)))
-    // console.log(rovers);
-    // console.log(roverCamera);
-
     const onSubmit = (e) => {
         e.preventDefault();
         console.log(roverCamera);
+        console.log(rover)
+        console.log(marsSol)
     }
+
+    useEffect(() => {
+        let index = 0;
+        if (rover === "Opportunity") {
+            index = 1;
+        } else if (rover === "Curiosity") {
+            index = 2;
+        }
+        setCurrentRoverIndex(index);
+    }, [rover])
 
     return (
         <DashboardContainer>
             <RoverInfo>
-                <RoverImage src={rovers[1].main_img} alt="rover picture"/>
-                <RoverName>{rovers[1].name.toUpperCase()}</RoverName>
+                <RoverImage src={rovers[currentRoverIndex].main_img} alt="rover picture"/>
+                <RoverName>{rovers[currentRoverIndex].name.toUpperCase()}</RoverName>
             </RoverInfo>
             <CameraInfo>
                 <CameraCheckboxes onSubmit={onSubmit}>
-                    {rovers[2].rover_cameras.split(',').map((camera, index) =>
+                    <RadioButtonContainer>
+                        {rovers.map(({name, id}) => (<RadioButton
+                            rover={rover}
+                            name={name}
+                            setRover={setRover}
+                            key={id}/>))}
+                    </RadioButtonContainer>
+                    {rovers[currentRoverIndex].rover_cameras.split(',').map((camera, index) =>
                         (<Checkbox
                             for={index}
                             camera={camera}
@@ -100,6 +143,15 @@ const DashboardSection = () => {
                             setRoverCamera={setRoverCamera}
                             index={index} key={index}
                         />))}
+                    <InputNumberContainer>
+                        <input type="number"
+                               name="marsSol"
+                               placeholder="Mars sol"
+                               value={marsSol}
+                               onChange={(e) => setMarsSol(e.target.value)}
+                               min="0"
+                        />
+                    </InputNumberContainer>
                     <ButtonContainer>
                         <Button type="submit">Submit</Button>
                     </ButtonContainer>

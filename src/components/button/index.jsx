@@ -15,7 +15,7 @@ const ButtonWrapper = styled.button`
   
   &:hover {
     background-color: transparent;
-    box-shadow: 0 0 0 0.05em indianred, 0 0 0.15em 0.1em #fff;
+    box-shadow: 0 0 0 0.05em red, 0 0 0.15em 0.1em #fff;
   }
 `
 

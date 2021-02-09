@@ -5,8 +5,8 @@ import curiosity from "../img/curiosity/main_img.jpg"
 const RoversData = () => {
     return [
         {
-            name:"spirit",
-            id: "1",
+            name:"Spirit",
+            id: "0",
             description: "",
             main_img: spirit,
             mission: "Mars surface exploration",
@@ -18,8 +18,8 @@ const RoversData = () => {
             rover_cameras: "FHAZ,RHAZ,NAVCAM,PANCAM,MINITES"
         },
         {
-            name:"opportunity",
-            id: "2",
+            name:"Opportunity",
+            id: "1",
             description: "",
             main_img: opportunity,
             mission: "Mars surface exploration",
@@ -31,8 +31,8 @@ const RoversData = () => {
             rover_cameras: "FHAZ,RHAZ,NAVCAM,PANCAM,MINITES"
         },
         {
-            name:"curiosity",
-            id: "3",
+            name:"Curiosity",
+            id: "2",
             description: "",
             main_img: curiosity,
             mission: "study the ancient habitability and the potential for life on Mars.",

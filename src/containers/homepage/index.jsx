@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from "styled-components";
 
 import GlobalStyling from "../../components/GlobalStyling";
@@ -32,12 +32,15 @@ const GlassContainer = styled.div`
 `
 
 const Homepage = () => {
+
+    const [picturesFromMars, setPicturesFromMars] = useState({});
+
     return (
         <PageContainer>
             <GlassContainer>
                 <GlobalStyling/>
-                <DashboardSection/>
-                <MainSection/>
+                <DashboardSection setPicturesFromMars={setPicturesFromMars}/>
+                <MainSection pictures={picturesFromMars}/>
             </GlassContainer>
         </PageContainer>
 
