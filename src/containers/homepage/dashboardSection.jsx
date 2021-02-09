@@ -4,6 +4,7 @@ import styled from "styled-components";
 //Import Rovers Data
 import roversData from '../../assets/rovers_data/RoversData.js';
 import Checkbox from "../../components/checkbox";
+import Button from "../../components/button";
 
 const DashboardContainer = styled.div`
   flex: 1;
@@ -38,7 +39,7 @@ const RoverName = styled.h2`
   letter-spacing: 2px;
 `
 
-const CameraCheckboxes = styled.div`
+const CameraCheckboxes = styled.form`
   border: 1px solid pink;
   padding: 2rem 0 2rem 2rem;
   width: 100%;
@@ -52,6 +53,12 @@ const CameraInfo = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+`
+
+const ButtonContainer = styled.div`
+  display: flex;
+  padding: 0.5rem 0 0 1.9rem;
+  
 `
 
 const DashboardSection = () => {
@@ -72,6 +79,11 @@ const DashboardSection = () => {
     // console.log(rovers);
     // console.log(roverCamera);
 
+    const onSubmit = (e) => {
+        e.preventDefault();
+        console.log(roverCamera);
+    }
+
     return (
         <DashboardContainer>
             <RoverInfo>
@@ -79,15 +91,18 @@ const DashboardSection = () => {
                 <RoverName>{rovers[1].name.toUpperCase()}</RoverName>
             </RoverInfo>
             <CameraInfo>
-                <CameraCheckboxes>
-                    {rovers[2].rover_cameras.split(',').map((camera,index) =>
+                <CameraCheckboxes onSubmit={onSubmit}>
+                    {rovers[2].rover_cameras.split(',').map((camera, index) =>
                         (<Checkbox
                             for={index}
                             camera={camera}
                             roverCamera={roverCamera}
                             setRoverCamera={setRoverCamera}
                             index={index} key={index}
-                            />))}
+                        />))}
+                    <ButtonContainer>
+                        <Button type="submit">Submit</Button>
+                    </ButtonContainer>
                 </CameraCheckboxes>
             </CameraInfo>
         </DashboardContainer>
