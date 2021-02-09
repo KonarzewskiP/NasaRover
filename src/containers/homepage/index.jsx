@@ -28,6 +28,7 @@ const GlassContainer = styled.div`
   z-index: 2;
   backdrop-filter: blur(2rem);
   display: flex;
+  box-shadow: 6px 6px 20px rgba(0, 0, 0, 0.5);
 `
 
 const Homepage = () => {
