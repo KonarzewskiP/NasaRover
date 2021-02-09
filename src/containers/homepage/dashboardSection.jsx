@@ -6,6 +6,7 @@ import roversData from '../../assets/rovers_data/RoversData.js';
 import Checkbox from "../../components/checkbox";
 import Button from "../../components/button";
 import RadioButton from "../../components/radioButton";
+import RoverFact from "../../components/roverFact";
 
 const DashboardContainer = styled.div`
   flex: 1;
@@ -19,9 +20,9 @@ const DashboardContainer = styled.div`
 `
 
 const RoverInfo = styled.div`
-  border: 1px solid red;
-  flex: 1;
+  //border: 1px solid red;
   display: flex;
+  height:35%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -41,16 +42,15 @@ const RoverName = styled.h2`
 
 const CameraCheckboxes = styled.form`
   height: 70%;
-  border: 1px solid pink;
-  padding: 2rem 0 2rem 2rem;
+  //border: 1px solid pink;
+  padding: 0 0 2rem 2rem;
   width: 100%;
   color: #F8FCFF;
 `
 
 const CameraInfo = styled.div`
-  flex: 3;
-  border: 1px solid green;
-  display: flex;
+  height:35%;
+  //border: 1px solid green;
   flex-direction: column;
   justify-content: center;
 `
@@ -83,6 +83,15 @@ const RadioButtonContainer = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 0 3.5rem 2rem 2rem;
+`
+
+const RoverFactsContainer = styled.div`
+  height:30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  //border: 1px solid gold;
+  position: relative;
 `
 
 const DashboardSection = ({setPicturesFromMars}) => {
@@ -126,6 +135,9 @@ const DashboardSection = ({setPicturesFromMars}) => {
                 <RoverImage src={rovers[currentRoverIndex].main_img} alt="rover picture"/>
                 <RoverName>{rovers[currentRoverIndex].name.toUpperCase()}</RoverName>
             </RoverInfo>
+            <RoverFactsContainer>
+                <RoverFact rover={rovers[currentRoverIndex]}/>
+            </RoverFactsContainer>
             <CameraInfo>
                 <CameraCheckboxes onSubmit={onSubmit}>
                     <RadioButtonContainer>
