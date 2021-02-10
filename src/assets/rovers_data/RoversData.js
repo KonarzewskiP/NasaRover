@@ -15,6 +15,7 @@ const RoversData = () => {
             lunch_date: "2003-07-10T17:58:47",
             end_date: "2011-05-25T00:00:00",
             mission_duration: '90 Mars sols (92.5 Earth days)',
+            final_mars_sols: '2205',
             driving_distance_km: "7.7",
             rover_cameras: "FHAZ,RHAZ,NAVCAM,PANCAM,MINITES"
         },
@@ -29,6 +30,7 @@ const RoversData = () => {
             lunch_date: "2003-07-08T03:18:15",
             end_date: "2018-06-10T00:00:00",
             mission_duration: '90 Mars sols (92.5 Earth days)',
+            final_mars_sols: '5111',
             driving_distance_km: "45.16",
             rover_cameras: "FHAZ,RHAZ,NAVCAM,PANCAM,MINITES"
         },
@@ -43,6 +45,7 @@ const RoversData = () => {
             lunch_date: "2011-11-26T15:02:00",
             end_date: "",
             mission_duration: 'One Mars year (23 Earth months)',
+            final_mars_sols: '',
             driving_distance_km: "20.4",
             rover_cameras: "FHAZ,RHAZ,MAST,CHEMCAM,MAHLI,MARDI,NAVCAM"
         }

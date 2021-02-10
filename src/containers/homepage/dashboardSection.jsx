@@ -7,6 +7,7 @@ import Checkbox from "../../components/checkbox";
 import Button from "../../components/button";
 import RadioButton from "../../components/radioButton";
 import RoverFact from "../../components/roverFact";
+import {calculateMaxSols} from "../../Util";
 
 const DashboardContainer = styled.div`
   flex: 1;
@@ -173,6 +174,7 @@ const DashboardSection = ({setApiData}) => {
                                value={marsSol}
                                onChange={(e) => setMarsSol(e.target.value)}
                                min="0"
+                               max={calculateMaxSols(rovers[currentRoverIndex].final_mars_sols)}
                         />
                     </InputNumberContainer>
                     <ButtonContainer>

@@ -35,3 +35,11 @@ export const convertDate = (date) => {
     return `${years}/${months < 10 ? "0" + months : months}/${days < 10 ? "0" + days : days} 
     ${hours < 10 ? "0" + hours : hours}:${minutes < 10 ? "0" + minutes : minutes}:${seconds < 10 ? "0" + seconds : seconds}`;
 }
+
+export const calculateMaxSols = (maxSol) => {
+    if (maxSol === '') {
+        let start = new Date("2011-11-26T15:02:00").getTime();
+        return moment().diff(start, 'days');
+    }
+    return maxSol;
+}

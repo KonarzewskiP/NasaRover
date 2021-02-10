@@ -36,7 +36,7 @@ const RoverPicturesSection = ({apiData}) => {
     const [marsPictures, setMarsPictures] = useState([]);
     const [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
-    const [picturesPerPage] = useState(5);
+    const [picturesPerPage] = useState(20);
 
     useEffect(() => {
         const fetchData = async () => {

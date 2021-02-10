@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import styled from "styled-components";
 
 import {calculateFinalTime, convertDate} from '../../Util.jsx'
@@ -72,7 +72,9 @@ const RoverFact = ({rover}) => {
                 <FactTitle>Mission Duration:</FactTitle>
                 <FactDescription><StyledSpan>Planed: </StyledSpan> {rover.mission_duration}</FactDescription>
                 <br/>
-                <FactDescription><StyledSpan>Final:</StyledSpan> {calculateFinalTime(rover.lunch_date, rover.end_date)}
+                <FactDescription>
+                    <StyledSpan>Final:</StyledSpan>
+                    {calculateFinalTime(rover.lunch_date, rover.end_date)}
                 </FactDescription>
             </FactThree>
         </FactContainer>
