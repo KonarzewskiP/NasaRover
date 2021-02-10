@@ -1,12 +1,19 @@
+<<<<<<< HEAD
 import React, {useState, useEffect} from 'react';
+=======
+import React, {useState} from 'react';
+>>>>>>> 279d77384e36944bff1573867f19efdd1c1a9994
 import styled from "styled-components";
 
 //Import Rovers Data
 import roversData from '../../assets/rovers_data/RoversData.js';
 import Checkbox from "../../components/checkbox";
+<<<<<<< HEAD
 import Button from "../../components/button";
 import RadioButton from "../../components/radioButton";
 import RoverFact from "../../components/roverFact";
+=======
+>>>>>>> 279d77384e36944bff1573867f19efdd1c1a9994
 
 const DashboardContainer = styled.div`
   flex: 1;
@@ -17,8 +24,47 @@ const DashboardContainer = styled.div`
   rgba(0, 0, 0, 0.7),
   rgba(0, 0, 200, 0.2));
   border-radius: 2rem 0 0 2rem;
+
 `
 
+const RoverInfo = styled.div`
+  border: 1px solid red;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`
+
+const RoverImage = styled.img`
+  height: 250px;
+  margin: 2rem 2rem 0 2rem;
+  box-shadow: 6px 6px 20px rgba(169, 169, 169, 0.3);
+  border-radius: 5px;
+`
+
+const RoverName = styled.h2`
+  color: #F8FCFF;
+  letter-spacing: 2px;
+`
+
+const CameraCheckboxes = styled.div`
+  border: 1px solid pink;
+  padding: 2rem 0 2rem 2rem;
+  width: 100%;
+  color: #F8FCFF;
+`
+
+const CameraInfo = styled.div`
+  flex: 3;
+  border: 1px solid green;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`
+
+<<<<<<< HEAD
 const RoverInfo = styled.div`
   //border: 1px solid red;
   display: flex;
@@ -99,6 +145,9 @@ const DashboardSection = ({setApiData}) => {
     const [rover, setRover] = useState("Spirit");
     const [currentRoverIndex, setCurrentRoverIndex] = useState(0);
     const [marsSol, setMarsSol] = useState('0');
+=======
+const DashboardSection = () => {
+>>>>>>> 279d77384e36944bff1573867f19efdd1c1a9994
     const [roverCamera, setRoverCamera] = useState([
         {name: 'FHAZ', isChecked: false},
         {name: 'RHAZ', isChecked: false},
@@ -112,6 +161,7 @@ const DashboardSection = ({setApiData}) => {
     ]);
 
     const [...rovers] = roversData();
+<<<<<<< HEAD
     const onSubmit = (e) => {
         e.preventDefault();
         console.log(roverCamera);
@@ -139,10 +189,16 @@ const DashboardSection = ({setApiData}) => {
         }
         setCurrentRoverIndex(index);
     }, [rover])
+=======
+    // console.log(rovers[1].rover_cameras.split(',').forEach((cam) => console.log(cam)))
+    // console.log(rovers);
+    // console.log(roverCamera);
+>>>>>>> 279d77384e36944bff1573867f19efdd1c1a9994
 
     return (
         <DashboardContainer>
             <RoverInfo>
+<<<<<<< HEAD
                 <RoverImage src={rovers[currentRoverIndex].main_img} alt="rover picture"/>
                 <RoverName>{rovers[currentRoverIndex].name.toUpperCase()}</RoverName>
             </RoverInfo>
@@ -159,12 +215,21 @@ const DashboardSection = ({setApiData}) => {
                             key={id}/>))}
                     </RadioButtonContainer>
                     {rovers[currentRoverIndex].rover_cameras.split(',').map((camera, index) =>
+=======
+                <RoverImage src={rovers[1].main_img} alt="rover picture"/>
+                <RoverName>{rovers[1].name.toUpperCase()}</RoverName>
+            </RoverInfo>
+            <CameraInfo>
+                <CameraCheckboxes>
+                    {rovers[2].rover_cameras.split(',').map((camera,index) =>
+>>>>>>> 279d77384e36944bff1573867f19efdd1c1a9994
                         (<Checkbox
                             for={index}
                             camera={camera}
                             roverCamera={roverCamera}
                             setRoverCamera={setRoverCamera}
                             index={index} key={index}
+<<<<<<< HEAD
                         />))}
                     <InputNumberContainer>
                         <input type="number"
@@ -178,6 +243,9 @@ const DashboardSection = ({setApiData}) => {
                     <ButtonContainer>
                         <Button type="submit">Submit</Button>
                     </ButtonContainer>
+=======
+                            />))}
+>>>>>>> 279d77384e36944bff1573867f19efdd1c1a9994
                 </CameraCheckboxes>
             </CameraInfo>
         </DashboardContainer>
