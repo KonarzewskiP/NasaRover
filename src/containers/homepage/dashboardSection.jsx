@@ -22,7 +22,7 @@ const DashboardContainer = styled.div`
 const RoverInfo = styled.div`
   //border: 1px solid red;
   display: flex;
-  height:35%;
+  height: 35%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -49,7 +49,7 @@ const CameraCheckboxes = styled.form`
 `
 
 const CameraInfo = styled.div`
-  height:35%;
+  height: 35%;
   //border: 1px solid green;
   flex-direction: column;
   justify-content: center;
@@ -86,7 +86,7 @@ const RadioButtonContainer = styled.div`
 `
 
 const RoverFactsContainer = styled.div`
-  height:30%;
+  height: 30%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -94,7 +94,7 @@ const RoverFactsContainer = styled.div`
   position: relative;
 `
 
-const DashboardSection = ({setPicturesFromMars}) => {
+const DashboardSection = ({setApiData}) => {
 
     const [rover, setRover] = useState("Spirit");
     const [currentRoverIndex, setCurrentRoverIndex] = useState(0);
@@ -116,7 +116,18 @@ const DashboardSection = ({setPicturesFromMars}) => {
         e.preventDefault();
         console.log(roverCamera);
         console.log(rover)
-        console.log(marsSol)
+        console.log(marsSol);
+
+        const temp = {
+            roverName: rover,
+            marsSol: marsSol,
+            activeRoverCam: roverCamera
+                .filter(cam => cam.isChecked === true)
+                .map(cam => cam.name).join('&')
+        };
+        console.log(temp);
+
+        setApiData(temp);
     }
 
     useEffect(() => {

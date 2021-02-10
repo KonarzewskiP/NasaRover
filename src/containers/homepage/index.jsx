@@ -14,12 +14,13 @@ const PageContainer = styled.div`
   align-items: center;
   justify-content: center;
   background: url(${backgroundImage});
-  background-size: cover;
+  //background-size: cover;
+  
 `
 
 const GlassContainer = styled.div`
   background: black;
-  min-height: 85vh;
+  height: 950px;
   width: 70%;
   background: linear-gradient(to right bottom,
   rgba(0, 0, 0, 0.7),
@@ -29,18 +30,20 @@ const GlassContainer = styled.div`
   backdrop-filter: blur(2rem);
   display: flex;
   box-shadow: 6px 6px 20px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  
 `
 
 const Homepage = () => {
 
-    const [picturesFromMars, setPicturesFromMars] = useState({});
+    const [apiData, setApiData] = useState({});
 
     return (
         <PageContainer>
             <GlassContainer>
                 <GlobalStyling/>
-                <DashboardSection setPicturesFromMars={setPicturesFromMars}/>
-                <MainSection pictures={picturesFromMars}/>
+                <DashboardSection setApiData={setApiData}/>
+                <MainSection apiData={apiData}/>
             </GlassContainer>
         </PageContainer>
 
