@@ -15,7 +15,7 @@ const PageContainer = styled.div`
   justify-content: center;
   background: url(${backgroundImage});
   //background-size: cover;
-  
+
 `
 
 const GlassContainer = styled.div`
@@ -30,11 +30,8 @@ const GlassContainer = styled.div`
   backdrop-filter: blur(2rem);
   display: flex;
   box-shadow: 6px 6px 20px rgba(0, 0, 0, 0.5);
-<<<<<<< HEAD
   overflow: hidden;
-  
-=======
->>>>>>> 279d77384e36944bff1573867f19efdd1c1a9994
+
 `
 
 const Homepage = () => {
