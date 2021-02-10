@@ -5,13 +5,13 @@ const Picture = styled.img`
   height: 150px;
   margin: 0.5rem;
   
-  
   &:hover{
     height: 500px;
   }
 `
 
 const MarsPicture = ({picture}) => {
+
     return (
         <Picture src={picture}>
 

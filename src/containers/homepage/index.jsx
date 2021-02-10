@@ -14,7 +14,7 @@ const PageContainer = styled.div`
   align-items: center;
   justify-content: center;
   background: url(${backgroundImage});
-  //background-size: cover;
+  background-size: cover;
 
 `
 
@@ -36,7 +36,11 @@ const GlassContainer = styled.div`
 
 const Homepage = () => {
 
-    const [apiData, setApiData] = useState({});
+    const [apiData, setApiData] = useState({
+        roverName: "Spirit",
+        marsSol: "0",
+        activeRoverCam: ""
+    });
 
     return (
         <PageContainer>
