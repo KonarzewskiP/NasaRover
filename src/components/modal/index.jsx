@@ -10,6 +10,10 @@ const Background = styled.div`
   border-radius: 2rem;
   backdrop-filter: blur(0.1rem);
   position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
   display: flex;
   justify-content: center;
   box-shadow: 6px 6px 20px rgba(9, 9, 9, 0.2);

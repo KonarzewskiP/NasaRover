@@ -3,8 +3,6 @@ import styled from "styled-components";
 import MarsPicture from "./marsPicture";
 import axios from "axios";
 import Pagination from "../../../components/pagination";
-import Modal from "../../../components/modal";
-import CloseModal from "../../../components/closeModal";
 
 const PictureContainer = styled.div`
   display: flex;
@@ -30,7 +28,7 @@ const PaginationButtonsWrapper = styled.div`
 
 `
 
-const RoverPicturesSection = ({apiData}) => {
+const RoverPicturesSection = ({apiData, openModal, setModalPicture}) => {
     const API_KEY = "kVBXO7R76SwS8bbEwtYcNo7zlXn5bmxmZc2Bf7ns";
     const API = `https://api.nasa.gov/mars-photos/api/v1/rovers/${apiData.roverName}/photos?sol=${apiData.marsSol}&camera=${apiData.activeRoverCam}&api_key=${API_KEY}`
 
@@ -38,12 +36,8 @@ const RoverPicturesSection = ({apiData}) => {
     const [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [picturesPerPage] = useState(20);
-    const [modalPicture, setModalPicture] = useState({});
 
-    const [showModal, setShowModal] = useState(false);
-    const openModal = () => {
-        setShowModal(prev => !prev);
-    }
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -72,16 +66,11 @@ const RoverPicturesSection = ({apiData}) => {
         return <LoadingTitle>Loading...</LoadingTitle>
     }
 
-    console.log(modalPicture.src);
-
     return (
         <PictureContainer>
             {currentPictures.map((img, index) =>
                 (<MarsPicture picture={img.img_src} openModal={openModal} setModalPicture={setModalPicture} key={index}/>))
             }
-            <Modal showModal={showModal} setShowModal={setShowModal} currentPicture={modalPicture}/>
-            {showModal ? <CloseModal setShowModal={setShowModal}/> : null}
-
             <PaginationButtonsWrapper>
                 <Pagination
                     currentPage={currentPage}
