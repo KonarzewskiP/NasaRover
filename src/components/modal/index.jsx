@@ -2,11 +2,11 @@ import React, {useEffect, useCallback} from 'react';
 import styled from "styled-components";
 
 const Background = styled.div`
-  width: 600px;
-  height: 600px;
+  width: 100%;
+  height: 100%;
   background: linear-gradient(to right bottom,
-  rgba(0, 0, 0, 0.02),
-  rgba(0, 0, 200, 0.02));
+  rgba(0, 0, 0, 0.8),
+  rgba(0, 0, 200, 0.3));
   border-radius: 2rem;
   backdrop-filter: blur(0.1rem);
   position: absolute;
@@ -48,12 +48,13 @@ const Modal = ({showModal, setShowModal, currentPicture}) => {
             return () => document.removeEventListener('keydown', keyPress);
         },
         [keyPress]);
+
     return (
         <>
             {showModal ? (
                 <Background>
                         <ModalWrapper>
-                            <ModalImg src={currentPicture.img_src} alt="mars picture"/>
+                            <ModalImg src={currentPicture.src} alt="mars picture"/>
                         </ModalWrapper>
                 </Background>
             ) : null}

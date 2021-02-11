@@ -1,4 +1,4 @@
-import React, {useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from "styled-components";
 import MarsPicture from "./marsPicture";
 import axios from "axios";
@@ -23,7 +23,6 @@ const LoadingTitle = styled.h2`
 `
 
 const PaginationButtonsWrapper = styled.div`
-  //border: 1px solid gold;
   height: 100px;
   width: 500px;
   position: absolute;
@@ -39,6 +38,7 @@ const RoverPicturesSection = ({apiData}) => {
     const [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [picturesPerPage] = useState(20);
+    const [modalPicture, setModalPicture] = useState({});
 
     const [showModal, setShowModal] = useState(false);
     const openModal = () => {
@@ -72,14 +72,14 @@ const RoverPicturesSection = ({apiData}) => {
         return <LoadingTitle>Loading...</LoadingTitle>
     }
 
+    console.log(modalPicture.src);
+
     return (
         <PictureContainer>
-            {currentPictures.map((img, index) => (
-                <>
-                    <MarsPicture picture={img.img_src} openModal={openModal} key={index}/>
-                    <Modal showModal={showModal} setShowModal={setShowModal} currentPicture={marsPictures[index]} key={img}/>
-                </>
-            ))}
+            {currentPictures.map((img, index) =>
+                (<MarsPicture picture={img.img_src} openModal={openModal} setModalPicture={setModalPicture} key={index}/>))
+            }
+            <Modal showModal={showModal} setShowModal={setShowModal} currentPicture={modalPicture}/>
             {showModal ? <CloseModal setShowModal={setShowModal}/> : null}
 
             <PaginationButtonsWrapper>

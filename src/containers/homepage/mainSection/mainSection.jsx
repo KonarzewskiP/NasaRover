@@ -5,7 +5,6 @@ import RoverPicturesSection from "./RoverPicturesSection";
 
 const MainSectionContainer = styled.div`
   flex: 2;
-  //border: 1px solid purple;
 `
 
 
