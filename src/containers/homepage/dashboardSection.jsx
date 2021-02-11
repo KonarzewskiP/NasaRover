@@ -21,7 +21,6 @@ const DashboardContainer = styled.div`
 `
 
 const RoverInfo = styled.div`
-  //border: 1px solid red;
   display: flex;
   height: 35%;
   flex-direction: column;
@@ -43,7 +42,6 @@ const RoverName = styled.h2`
 
 const CameraCheckboxes = styled.form`
   height: 70%;
-  //border: 1px solid pink;
   padding: 0 0 2rem 2rem;
   width: 100%;
   color: #F8FCFF;
@@ -51,7 +49,6 @@ const CameraCheckboxes = styled.form`
 
 const CameraInfo = styled.div`
   height: 35%;
-  //border: 1px solid green;
   flex-direction: column;
   justify-content: center;
 `
@@ -91,7 +88,6 @@ const RoverFactsContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  //border: 1px solid gold;
   position: relative;
 `
 
@@ -115,9 +111,6 @@ const DashboardSection = ({setApiData}) => {
     const [...rovers] = roversData();
     const onSubmit = (e) => {
         e.preventDefault();
-        console.log(roverCamera);
-        console.log(rover)
-        console.log(marsSol);
 
         const temp = {
             roverName: rover,
@@ -126,8 +119,6 @@ const DashboardSection = ({setApiData}) => {
                 .filter(cam => cam.isChecked === true)
                 .map(cam => cam.name).join('&')
         };
-        console.log(temp);
-
         setApiData(temp);
     }
 

@@ -1,3 +1,8 @@
+Mars Rover is Web Application that integrates with the NASA API. You can choose between 3 different
+Mars Rovers and check pictures from selected cameras and specific day.
+
+https://mars-photos.netlify.app/
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

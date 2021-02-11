@@ -66,6 +66,13 @@ const RoverPicturesSection = ({apiData, openModal, setModalPicture}) => {
         return <LoadingTitle>Loading...</LoadingTitle>
     }
 
+    if (apiData && marsPictures.length === 0) {
+        return <LoadingTitle>No Data</LoadingTitle>
+    }
+
+
+    console.log(apiData)
+
     return (
         <PictureContainer>
             {currentPictures.map((img, index) =>
