@@ -5,17 +5,12 @@ const Picture = styled.img`
   height: 150px;
   margin: 0.5rem;
   
-  &:hover{
-    height: 500px;
-  }
 `
 
-const MarsPicture = ({picture}) => {
+const MarsPicture = ({picture,openModal}) => {
 
     return (
-        <Picture src={picture}>
-
-        </Picture>
+        <Picture src={picture} onClick={openModal}/>
     );
 };
 

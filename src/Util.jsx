@@ -43,3 +43,5 @@ export const calculateMaxSols = (maxSol) => {
     }
     return maxSol;
 }
+
+

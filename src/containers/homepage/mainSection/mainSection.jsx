@@ -5,14 +5,16 @@ import RoverPicturesSection from "./RoverPicturesSection";
 
 const MainSectionContainer = styled.div`
   flex: 2;
-  border: 1px solid purple;
-  
+  //border: 1px solid purple;
 `
 
-const MainSection = ({apiData}) => {
+
+const MainSection = ({apiData, showModal, setShowModal}) => {
+
     return (
         <MainSectionContainer>
-            <RoverPicturesSection apiData={apiData}/>
+                <RoverPicturesSection apiData={apiData} showModal={showModal} setShowModal={setShowModal}/>
+
         </MainSectionContainer>
     );
 };

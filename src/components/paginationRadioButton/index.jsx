@@ -3,11 +3,9 @@ import {LabelWrapper, RadioControl, RadioInput, RadioLabel} from "../RadioButton
 import styled from "styled-components";
 
 const RadioInputWrapper = styled.div`
-  margin: 0;
 `
 
 const RadioLabelWrapper = styled.div`
-  //margin: 0 0.5em;
   padding: 0 0.5em;
 `
 const PaginationButton = ({currentPage, pageNumber, paginate}) => {
@@ -25,6 +23,7 @@ const PaginationButton = ({currentPage, pageNumber, paginate}) => {
                             checked={currentPage === pageNumber}
                             value={pageNumber}
                             onClick={() => paginate(pageNumber)}
+                            readOnly
                         />
                         <RadioControl/>
                     </RadioInput>

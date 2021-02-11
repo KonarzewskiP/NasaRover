@@ -21,11 +21,12 @@ const Pagination = ({currentPage,picturesPerPage, totalPictures, paginate}) => {
     }
     return (
         <PageButtonsWrapper>
-            {pageNumbers.map(number => (
+            {pageNumbers.map((number, index) => (
                 <PaginationButton
                     currentPage={currentPage}
                     pageNumber={number}
                     paginate={paginate}
+                    key={index}
                 >{number}
                 </PaginationButton>
             ))}

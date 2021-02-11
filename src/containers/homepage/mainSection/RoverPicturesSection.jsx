@@ -1,8 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState } from 'react';
 import styled from "styled-components";
 import MarsPicture from "./marsPicture";
 import axios from "axios";
 import Pagination from "../../../components/pagination";
+import Modal from "../../../components/modal";
+import CloseModal from "../../../components/closeModal";
 
 const PictureContainer = styled.div`
   display: flex;
@@ -38,6 +40,11 @@ const RoverPicturesSection = ({apiData}) => {
     const [currentPage, setCurrentPage] = useState(1);
     const [picturesPerPage] = useState(20);
 
+    const [showModal, setShowModal] = useState(false);
+    const openModal = () => {
+        setShowModal(prev => !prev);
+    }
+
     useEffect(() => {
         const fetchData = async () => {
             setLoading(true);
@@ -57,7 +64,7 @@ const RoverPicturesSection = ({apiData}) => {
     const currentPictures = marsPictures.slice(indexOfFirstPicture, indexOfLastPicture);
 
     //Change page
-    const paginate =(pageNumber) =>{
+    const paginate = (pageNumber) => {
         setCurrentPage(pageNumber)
     }
 
@@ -67,7 +74,14 @@ const RoverPicturesSection = ({apiData}) => {
 
     return (
         <PictureContainer>
-            {currentPictures.map((img, index) => (<MarsPicture picture={img.img_src} key={index}/>))}
+            {currentPictures.map((img, index) => (
+                <>
+                    <MarsPicture picture={img.img_src} openModal={openModal} key={index}/>
+                    <Modal showModal={showModal} setShowModal={setShowModal} currentPicture={marsPictures[index]} key={img}/>
+                </>
+            ))}
+            {showModal ? <CloseModal setShowModal={setShowModal}/> : null}
+
             <PaginationButtonsWrapper>
                 <Pagination
                     currentPage={currentPage}
