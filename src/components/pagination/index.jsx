@@ -7,13 +7,14 @@ const PageButtonsWrapper = styled.div`
   color: white;
   margin: 1rem;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
-
+  text-align: center;
 `
 
 
-const Pagination = ({currentPage,picturesPerPage, totalPictures, paginate}) => {
+const Pagination = ({currentPage, picturesPerPage, totalPictures, paginate}) => {
     const pageNumbers = [];
 
     for (let i = 1; i <= Math.ceil(totalPictures / picturesPerPage); i++) {

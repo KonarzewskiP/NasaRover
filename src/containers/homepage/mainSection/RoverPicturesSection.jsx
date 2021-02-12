@@ -4,15 +4,16 @@ import MarsPicture from "./marsPicture";
 import axios from "axios";
 import Pagination from "../../../components/pagination";
 
-const PictureContainer = styled.div`
+const PicturesContainer = styled.div`
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+  width: 95%;
+  height: 95%;
+  flex-direction: column;
+  justify-items: center;
+  align-self: center;
   color: white;
-  margin: 2rem;
-  position: relative;
-
+  margin: 2.5rem ;
+  overflow: auto;
 `
 const LoadingTitle = styled.h2`
   font-size: 50px;
@@ -21,11 +22,19 @@ const LoadingTitle = styled.h2`
 `
 
 const PaginationButtonsWrapper = styled.div`
-  height: 100px;
-  width: 500px;
-  position: absolute;
-  bottom: -150px;
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  align-self: center;
+  justify-content: center;
+`
 
+const ImageContainer = styled.div`
+  max-height: 90%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px,  1fr));
+  grid-gap: 1rem;
+  justify-items: center;
 `
 
 const RoverPicturesSection = ({apiData, openModal, setModalPicture}) => {
@@ -35,8 +44,7 @@ const RoverPicturesSection = ({apiData, openModal, setModalPicture}) => {
     const [marsPictures, setMarsPictures] = useState([]);
     const [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
-    const [picturesPerPage] = useState(20);
-
+    const [picturesPerPage] = useState(15);
 
 
     useEffect(() => {
@@ -74,19 +82,23 @@ const RoverPicturesSection = ({apiData, openModal, setModalPicture}) => {
     console.log(apiData)
 
     return (
-        <PictureContainer>
-            {currentPictures.map((img, index) =>
-                (<MarsPicture picture={img.img_src} openModal={openModal} setModalPicture={setModalPicture} key={index}/>))
-            }
+        <PicturesContainer>
+            <ImageContainer>
+                {currentPictures.map((img, index) =>
+                    (<MarsPicture picture={img.img_src} openModal={openModal} setModalPicture={setModalPicture}
+                                  key={index}/>))
+                }
+            </ImageContainer>
             <PaginationButtonsWrapper>
                 <Pagination
                     currentPage={currentPage}
                     picturesPerPage={picturesPerPage}
                     totalPictures={marsPictures.length}
                     paginate={paginate}
+                    large
                 />
             </PaginationButtonsWrapper>
-        </PictureContainer>
+        </PicturesContainer>
     );
 };
 

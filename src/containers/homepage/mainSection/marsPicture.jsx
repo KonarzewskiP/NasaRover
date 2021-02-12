@@ -2,9 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Picture = styled.img`
-  height: 150px;
-  margin: 0.5rem;
-
+  max-width: 100%;
+  object-fit: cover;
 `
 
 const MarsPicture = ({picture, openModal, setModalPicture}) => {
