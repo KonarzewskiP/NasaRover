@@ -15,13 +15,12 @@ const PageContainer = styled.div`
   justify-content: center;
   background: url(${backgroundImage});
   background-size: cover;
-
 `
 
 const GlassContainer = styled.div`
   background: black;
-  height: 950px;
-  width: 70%;
+  height: 85vh;
+  width: 80vw;
   background: linear-gradient(to right bottom,
   rgba(0, 0, 0, 0.7),
   rgba(0, 0, 200, 0.2));
@@ -29,6 +28,7 @@ const GlassContainer = styled.div`
   z-index: 2;
   backdrop-filter: blur(2rem);
   display: flex;
+  flex-direction: row;
   box-shadow: 6px 6px 20px rgba(0, 0, 0, 0.5);
   overflow: hidden;
 

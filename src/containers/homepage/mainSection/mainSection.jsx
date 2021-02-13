@@ -8,7 +8,8 @@ import CloseModal from "../../../components/closeModal";
 const MainSectionContainer = styled.div`
   flex: 2;
   position: relative;
-`
+  //border: 1px sienna solid;
+ `
 
 
 const MainSection = ({apiData}) => {

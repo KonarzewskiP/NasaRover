@@ -12,7 +12,7 @@ export const RadioControl = styled.span`
 `
 
 export  const LabelWrapper = styled.label`
-  font-size: 1rem;
+  font-size: ${({large}) => large ? "1.5rem" : "1rem"};
   color: white;
 
   display: grid;
@@ -21,8 +21,8 @@ export  const LabelWrapper = styled.label`
 
   input + ${RadioControl}::before {
     content: "";
-    width: .5em;
-    height: .5em;
+    width: 0.5em;
+    height: 0.5em;
     box-shadow: inset .5em .5em white;
     border-radius: 50%;
     transition: 180ms transform ease-in-out;

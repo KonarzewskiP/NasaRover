@@ -2,13 +2,13 @@ import React from 'react';
 import {LabelWrapper, RadioControl, RadioInput, RadioLabel} from "../RadioButtonsStyling";
 
 
-const RadioButton = ({rover, name, setRover}) => {
+const RadioButton = ({ rover, name, setRover}) => {
     return (
         <LabelWrapper>
             <RadioLabel>
                 {name}
             </RadioLabel>
-            <RadioInput>
+            <RadioInput >
                 <input
                     type="radio"
                     checked={rover === name}
