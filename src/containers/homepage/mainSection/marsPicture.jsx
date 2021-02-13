@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 const Picture = styled.img`
   max-width: 100%;
+  max-height: 180px;
   object-fit: cover;
 `
 

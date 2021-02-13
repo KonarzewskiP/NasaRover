@@ -52,20 +52,30 @@ const RoverPicturesSection = ({apiData, openModal, setModalPicture}) => {
 
     const {data, error} = useSWR(API, fetcher);
 
+    const regex = new RegExp(`${apiData.activeRoverCam}`, 'g')
+    const marsPictures = data ? data.photos.filter(photo => photo.camera.name.match(regex)) : [];
+
     // Get current posts
     const indexOfLastPicture = currentPage * picturesPerPage;
     const indexOfFirstPicture = indexOfLastPicture - picturesPerPage;
-    const currentPictures = (data ? data.photos.slice(indexOfFirstPicture, indexOfLastPicture) : []);
-    const marsPictures = (data ? data.photos : []);
+    const currentPictures = marsPictures.slice(indexOfFirstPicture, indexOfLastPicture);
+
 
     //Change page
     const paginate = (pageNumber) => {
         setCurrentPage(pageNumber)
     }
 
+    console.log(data);
+
+    console.log(data?.photos.filter(photo => photo.camera.name.match(regex)));
+    console.log(apiData.activeRoverCam)
+    console.log('mars pictures')
+    console.log(marsPictures)
+
     if (error) return <LoadingTitle>failed to load</LoadingTitle>
     if (!data) return <LoadingTitle>Loading...</LoadingTitle>
-    if (data.photos.length === 0) return <LoadingTitle>No Data...</LoadingTitle>
+    if (marsPictures.length === 0) return <LoadingTitle>No Data...</LoadingTitle>
 
     return (
         <PicturesContainer>
