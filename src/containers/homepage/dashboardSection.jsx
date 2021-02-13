@@ -117,7 +117,7 @@ const DashboardSection = ({setApiData}) => {
             marsSol: marsSol,
             activeRoverCam: roverCamera
                 .filter(cam => cam.isChecked === true)
-                .map(cam => cam.name).join('&')
+                .map(cam => cam.name).join('|')
         };
         setApiData(temp);
     }
