@@ -1,17 +1,27 @@
 import React, {useEffect, useState, useCallback} from 'react';
 import styled from "styled-components";
 import PaginationButton from "../paginationButton";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faAngleLeft} from "@fortawesome/free-solid-svg-icons/faAngleLeft";
+import {faAngleRight} from "@fortawesome/free-solid-svg-icons/faAngleRight";
 
-const ArrowLeft = styled.li`
+
+const ArrowButton = styled.li`
   pointer-events: ${({disabled}) => disabled ? "none" : "auto"};
   opacity: ${({disabled}) => disabled ? "0.6" : "1"};
-  border-radius: 5px 0 0 5px;
   background-color: blueviolet;
 `
-const ArrowRight = styled.li`
+
+const LastButton = styled.li`
   pointer-events: ${({disabled}) => disabled ? "none" : "auto"};
   opacity: ${({disabled}) => disabled ? "0.6" : "1"};
   border-radius: 0 5px 5px 0;
+  background-color: blueviolet;
+`
+const FirstButton = styled.li`
+  pointer-events: ${({disabled}) => disabled ? "none" : "auto"};
+  opacity: ${({disabled}) => disabled ? "0.6" : "1"};
+  border-radius: 5px 0 0 5px;
   background-color: blueviolet;
 `
 
@@ -50,16 +60,6 @@ const PaginationWrapper = styled.div`
 
 const PaginationTwo = ({currentPage, picturesPerPage, totalPictures, paginate}) => {
         const [pager, setPager] = useState([]);
-        // const [startPage, setStartPage] = useState(0);
-        // const [endPage, setEndPage] = useState(0);
-
-        // useEffect(() => {
-        //
-        //     setStartPage(getActivePages());
-        //     setEndPage();
-        //
-        // }, [currentPage]);
-
 
         const getActivePages = useCallback(() => {
             let startPage = 1;
@@ -110,12 +110,12 @@ const PaginationTwo = ({currentPage, picturesPerPage, totalPictures, paginate}) 
         return (
             <PaginationWrapper>
                 <ul>
-                    <ArrowLeft disabled={currentPage === 1} onClick={() => paginate(1)}>
+                    <FirstButton disabled={currentPage === 1} onClick={() => paginate(1)}>
                         First
-                    </ArrowLeft>
-                    <ArrowLeft disabled={currentPage === 1} onClick={() => paginate(currentPage - 1)}>
-                        Previous
-                    </ArrowLeft>
+                    </FirstButton>
+                    <ArrowButton disabled={currentPage === 1} onClick={() => paginate(currentPage - 1)}>
+                       <FontAwesomeIcon icon={faAngleLeft}/>
+                    </ArrowButton>
                     {pager.map((number, index) => (
                         <PaginationButton
                             currentPage={currentPage}
@@ -124,14 +124,14 @@ const PaginationTwo = ({currentPage, picturesPerPage, totalPictures, paginate}) 
                             key={index}
                         />
                     ))}
-                    <ArrowRight disabled={currentPage === getActivePages().totalPages}
+                    <ArrowButton disabled={currentPage === getActivePages().totalPages}
                                 onClick={() => paginate(currentPage + 1)}>
-                        Next
-                    </ArrowRight>
-                    <ArrowRight disabled={currentPage === getActivePages().totalPages}
+                        <FontAwesomeIcon icon={faAngleRight}/>
+                    </ArrowButton>
+                    <LastButton disabled={currentPage === getActivePages().totalPages}
                                 onClick={() => paginate(getActivePages().totalPages)}>
                         Last
-                    </ArrowRight>
+                    </LastButton>
                 </ul>
             </PaginationWrapper>
         );
