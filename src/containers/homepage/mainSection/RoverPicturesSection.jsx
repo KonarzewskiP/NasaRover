@@ -1,9 +1,9 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import styled from "styled-components";
 import MarsPicture from "./marsPicture";
 import axios from "axios";
-import Pagination from "../../../components/pagination";
 import useSWR from 'swr';
+import PaginationTwo from "../../../components/pagination";
 
 const PicturesContainer = styled.div`
   display: flex;
@@ -23,11 +23,12 @@ const LoadingTitle = styled.h2`
 `
 
 const PaginationButtonsWrapper = styled.div`
-  width: 80%;
+  width: 60%;
   display: flex;
-  flex-wrap: wrap;
   align-self: center;
   justify-content: center;
+  position: absolute;
+  bottom: 0;
 `
 
 const ImageContainer = styled.div`
@@ -60,18 +61,14 @@ const RoverPicturesSection = ({apiData, openModal, setModalPicture}) => {
     const indexOfFirstPicture = indexOfLastPicture - picturesPerPage;
     const currentPictures = marsPictures.slice(indexOfFirstPicture, indexOfLastPicture);
 
-
     //Change page
     const paginate = (pageNumber) => {
         setCurrentPage(pageNumber)
     }
 
-    console.log(data);
-
-    console.log(data?.photos.filter(photo => photo.camera.name.match(regex)));
-    console.log(apiData.activeRoverCam)
-    console.log('mars pictures')
-    console.log(marsPictures)
+    useEffect(()=>{
+        setCurrentPage(1);
+    },[apiData])
 
     if (error) return <LoadingTitle>failed to load</LoadingTitle>
     if (!data) return <LoadingTitle>Loading...</LoadingTitle>
@@ -86,12 +83,11 @@ const RoverPicturesSection = ({apiData, openModal, setModalPicture}) => {
                 }
             </ImageContainer>
             <PaginationButtonsWrapper>
-                <Pagination
+                <PaginationTwo
                     currentPage={currentPage}
                     picturesPerPage={picturesPerPage}
                     totalPictures={marsPictures.length}
                     paginate={paginate}
-                    large
                 />
             </PaginationButtonsWrapper>
         </PicturesContainer>
