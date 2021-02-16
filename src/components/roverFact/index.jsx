@@ -6,6 +6,11 @@ import {calculateFinalTime, convertDate} from '../../Util.jsx'
 const FactContainer = styled.div`
   color: white;
   padding: 0 2.5rem 0 2rem;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  max-width: 90%;
+
 `
 
 const FactTitle = styled.h2`
@@ -23,40 +28,23 @@ const StyledSpan = styled.span`
 `
 
 const FactOne = styled.div`
-  position: absolute;
-  top: 0;
-  padding-right: 3rem;
+  max-width: 90%;
+  overflow: hidden;
 
   h2 {
     margin-top: 0;
   }
 `
 const FactTwo = styled.div`
-  position: absolute;
-  bottom: 135px;
+  max-width: 90%;
+  overflow: hidden;
 `
 const FactThree = styled.div`
-  position: absolute;
-  bottom: 45px;
+  max-width: 90%;
+  overflow: hidden;
 `
 
 const RoverFact = ({rover}) => {
-    // console.log(rover.name)
-    // const [time,setTime] = useState(calculateFinalTime(rover.lunch_date, rover.end_date))
-    //
-    // setTime(setTimeout(() => tick(), 1000));
-    //
-    // const tick = () => {
-    //     if (rover.name === 'Curiosity') {
-    //        return calculateFinalTime(rover.lunch_date, rover.end_date);
-    //     }
-    // }
-    // useEffect(() => {
-    //     const timer = setTimeout(() => tick(), 1000);
-    //     return () => {
-    //         clearTimeout(timer)
-    //     };
-    // }, [time])
 
     return (
         <FactContainer>

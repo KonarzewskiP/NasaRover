@@ -10,29 +10,33 @@ import RoverFact from "../../components/roverFact";
 import {calculateMaxSols} from "../../Util";
 
 const DashboardContainer = styled.div`
-  flex: 1;
+  //flex: 1;
   display: flex;
+  max-width: 35%;
   flex-direction: column;
   justify-content: space-between;
   background: linear-gradient(to right bottom,
   rgba(0, 0, 0, 0.7),
   rgba(0, 0, 200, 0.2));
   border-radius: 2rem 0 0 2rem;
+  overflow: auto;
 `
 
 const RoverInfo = styled.div`
   display: flex;
-  height: 35%;
+  flex: 3;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 `
 
 const RoverImage = styled.img`
-  max-height: 220px;
+  max-width: 80%;
   margin: 2rem 2rem 0 2rem;
   box-shadow: 6px 6px 20px rgba(169, 169, 169, 0.3);
   border-radius: 5px;
+  overflow: hidden;
 `
 
 const RoverName = styled.h2`
@@ -41,16 +45,16 @@ const RoverName = styled.h2`
 `
 
 const CameraCheckboxes = styled.form`
-  height: 70%;
   padding: 0 0 2rem 2rem;
-  width: 100%;
   color: #F8FCFF;
 `
 
 const CameraInfo = styled.div`
-  height: 35%;
+  flex: 3;
   flex-direction: column;
   justify-content: center;
+  max-width: 90%;
+  overflow: hidden;
 `
 
 const ButtonContainer = styled.div`
@@ -81,14 +85,15 @@ const RadioButtonContainer = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 0 3.5rem 2rem 2rem;
+  
 `
 
 const RoverFactsContainer = styled.div`
-  height: 30%;
   display: flex;
+  flex: 2;
   flex-direction: column;
   justify-content: space-between;
-  position: relative;
+  margin-bottom: 1rem;
 `
 
 const DashboardSection = ({setApiData}) => {
