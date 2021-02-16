@@ -12,7 +12,6 @@ const MarsPicture = ({picture, openModal, setModalPicture}) => {
     const onClick = (e) => {
         openModal();
         setModalPicture(e.target);
-
     }
 
     return (
