@@ -6,7 +6,7 @@ import Modal from "../../../components/modal";
 import CloseModal from "../../../components/closeModal";
 
 const MainSectionContainer = styled.div`
-  flex: 2;
+  flex: 1;
   position: relative;
  `
 
